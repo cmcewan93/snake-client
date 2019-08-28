@@ -1,12 +1,13 @@
 const net = require('net');
+const constants = require('./constants.js')
 /**
  * Establishes connection with the game server
  */
 
 const connect = function() {
   const conn = net.createConnection({ 
-    host: 'localhost',
-    port: 50541
+    host: constants.IP,
+    port: constants.PORT
   });
   conn.on('data', (data) => {
     console.log(data);
@@ -18,15 +19,12 @@ const connect = function() {
     conn.write('Name: CM');
   })
   
-  conn.on('connect', () => {
-    setInterval(() => {
-      conn.write('Move: up');
-    }, 500)
-  })
+  // conn.on('connect', () => {
+  //   setInterval(() => {
+  //     conn.write('Move: up');
+  //   }, 500)
+  // })
   
- 
-
-
   // interpret incoming data as text
   conn.setEncoding('utf8'); 
 
