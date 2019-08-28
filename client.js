@@ -11,6 +11,20 @@ const connect = function() {
   conn.on('data', (data) => {
     console.log(data);
   });
+  conn.on('connect', () => {
+    console.log('I have connected')
+  })
+  conn.on('connect', () => {
+    conn.write('Name: CM');
+  })
+  
+  conn.on('connect', () => {
+    setInterval(() => {
+      conn.write('Move: up');
+    }, 500)
+  })
+  
+ 
 
 
   // interpret incoming data as text
